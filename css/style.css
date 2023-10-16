@@ -1,0 +1,258 @@
+html,body{
+    padding:0px;
+    margin:0px;
+    font-size: 0px;
+}
+body {
+    background-color:#1e222a;
+    color:#8ca1f0;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.navigation {
+    background-color:#2227301e;
+    color:white;
+    height:50px;
+}
+.navigation ul {
+    margin:0px;   
+    list-style: none;
+    padding:0px;
+}
+.navigation li {
+    font-size:17px;
+    display: inline-block;
+    float: right;
+    margin-right:30px;
+    height:50px;
+    line-height: 50px;
+}
+.navigation a:hover {
+    transition: .2s;
+    cursor:pointer;
+    color:#8ca1f0;
+}
+.capa {
+    color:white;
+}
+.capa span{
+    color:#8ca1f0;
+    display: block;
+}
+.capa div {
+    display: inline-block;
+    height:650px;
+}
+.profile-icon {
+    width:40%;
+    text-align: center;
+}
+.profile-icon img {
+    width:320px;
+    border-radius:50%;
+    margin-top:100px;
+}
+.profile-title{
+    vertical-align: top;
+    width:60%;
+
+}
+.profile-title h1 {
+    text-transform: uppercase;
+    font-size:50px;
+    margin-top:170px;
+    line-height: 50px;
+}
+.profile-title h2 {
+    font-size:16px;
+    margin-top:-20px;
+}
+.navigation a {
+    font-size:17px;
+    text-decoration: none;
+    color:white;
+}
+.experience {
+    width:50%;
+    display: inline-block;
+}
+ .listexperience li {
+    font-size: 20px;
+    display: flex;
+  }
+ .listexperience li:nth-child(2n+1) ul {
+    border-color: #d299c2;
+  }
+ .listexperience li:nth-child(2n) ul {
+    border-color: #fef9d7;
+  }
+  .listexperience li {
+    color:rgb(215, 215, 215);
+  }
+ .listexperience li ul {
+    padding-left: 20px;
+    border-left: solid 2px #fff;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .listexperience li a{
+    text-decoration: none;
+    color:rgb(215, 215, 215);
+  }
+  .listexperience li a:hover {
+    transition: .2s;
+    cursor:pointer;
+    color:white;
+}
+  .title {
+    font-size:30px;
+    padding:10px;
+    margin-left:30px;
+    color:#8ca1f0;
+  }
+  .dados {
+    width:33%;
+    display: inline-block;
+}
+
+
+hr {
+    margin:30px;
+    border:2px solid #29303b;
+    margin-top:-20px;
+}
+ .container-title {
+    font-size:30px;
+    margin-left:30px;
+    color:#8ca1f0;
+}
+.container-description{
+    font-size: 20px;
+    font-weight: normal;
+    color:rgb(215, 215, 215);
+    margin-left:30px;
+}
+.contato {
+    margin:auto;
+    margin-left:100px;
+    margin-top:100px;
+    padding:10px;
+}
+.contato h1 {
+    font-size:27px;
+}
+.contato h3 {
+    color:white;
+    font-size: 23px;
+}
+.contato p {
+    color:rgb(215, 215, 215);
+    font-size: 20px;
+}
+.contato i {
+    font-size:25px;
+}
+.contato a {
+    text-decoration: none;
+    color:white;
+    transition: .2s;
+}
+.contato p a {
+    margin-right:10px;
+}
+.contato a:hover {
+    color:#8ca1f0;
+}
+.contato img {
+    margin-right:30px;
+    border-radius:6px;
+    width:300px;
+    float:right;
+    text-align: center;
+}
+.profile-icon {
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 2s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.footer {
+    margin-top:30px;
+    font-size: 20px;
+    color:rgb(239, 233, 233);
+    text-align: center;
+}
+.footer i {
+    -webkit-animation: moverHeart .43s infinite  alternate;
+    animation: moverHeart .43s infinite  alternate;
+}
+@-webkit-keyframes moverHeart {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+@keyframes moverHeart{
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+.navigation li.threeline-icon{
+    display: none;
+}
+
+@media (max-width:1000px) {
+
+   .navigation li {
+    display: none;
+   }
+   .navigation li.threeline-icon {
+    display: inline-block;
+   }
+   .profile-icon {
+    width: 100%;
+   }
+   .profile-icon img {
+    margin-top: 0px;
+    max-width: 80%;
+   }
+   .profile-title  {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+   }
+   .profile-title h1 {
+    margin-top: 30px;
+    font-size: 40px;
+    margin-left:20px;
+    margin-right: 20px;
+   }
+   .profile-title h2 {
+    margin-top:20px;
+    margin-left:20px;
+    margin-right: 20px;
+   }
+   .capa div {
+    display: block;
+    height: auto;
+   }
+   .experience {
+    width:100%;
+    display:block;
+}
+.title {
+    font-size:25px;
+    padding:10px;
+    margin-left:30px;
+    color:#8ca1f0;
+  }
+  .container-title {
+    font-size: 25px;
+  }
+  .container-description {
+    font-size: 16px;
+  }
+}

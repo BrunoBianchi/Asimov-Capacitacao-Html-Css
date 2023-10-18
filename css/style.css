@@ -204,77 +204,32 @@ hr {
     display: none;
 }
 
-@media (max-width:1000px) {
-
-   .navigation li {
-    display: none;
-   }
-   .navigation li.threeline-icon {
-    display: inline-block;
-   }
-   .profile-icon {
-    width: 100%;
-   }
-   .profile-icon img {
-    margin-top: 0px;
-    max-width: 80%;
-   }
-   .profile-title  {
-    width: 100%;
-    text-align: center;
-    margin-top: 0px;
-   }
-   .profile-title h1 {
-    margin-top: 30px;
-    font-size: 40px;
-    margin-left:20px;
-    margin-right: 20px;
-   }
-   .profile-title h2 {
-    margin-top:20px;
-    margin-left:20px;
-    margin-right: 20px;
-   }
-   .capa div {
-    display: block;
-    height: auto;
-   }
-   .experience {
-    width:100%;
-    display:block;
-}
-.title {
-    font-size:25px;
-    padding:10px;
-    margin-left:30px;
-    color:#8ca1f0;
-  }
-  .container-title {
-    font-size: 25px;
-  }
-  .container-description {
-    font-size: 16px;
-  }
-}
 #repositorios {
     width:100%;
 }
 .rep-card {
     margin:auto;
     margin-left:80px;
-    margin-top:20px;
+    margin-top:30px;
     display: inline-block;
     width:25%;
     color:white;
     height:200px;
-    background-color:#1d222d;
+    border:2px solid #31353c4d;
+    background-color:#1b2029;
     border-radius:5px;
     -webkit-box-shadow: 26px 19px 55px -12px rgba(0,0,0,0.43);
     -moz-box-shadow: 26px 19px 55px -12px rgba(0,0,0,0.43);
     box-shadow: 26px 19px 55px -12px rgba(0,0,0,0.43);
 }
 .rep-card:hover {
-    background-color:#1c202b;
+    background-color:#161a23;
+    cursor:pointer;
+    transition: .3s;
+    transform: translate(0, -10px);
+}
+.rep-card:hover .rep-title a {
+    color:#08e17c;
 }
 .rep-header {
     position: relative;
@@ -319,3 +274,106 @@ hr {
     font-size:20px;
     float:right;
 }
+.loadmore {
+    font-size: 23px;
+    background-color:#5b08e1;
+    color:white;
+    padding:10px;
+    border-radius:5px;
+    text-align: center;
+    position: relative;
+    left:45%;
+    width:100%;
+    top:40px;
+}
+.loadmore:hover {
+    cursor:pointer;
+    background-color:#4a03bc;
+}
+  .rep-card .skeleton {
+    margin-bottom:50px;
+    margin-top:50px;
+    
+  }
+  .skeleton {
+    background-color: #272d39;
+    background-image: linear-gradient(90deg, #2f3440, #363b47, #2f3440);
+    background-size: 40px 100%;
+    background-repeat: no-repeat;
+    background-position: left -40px top 0;
+    -webkit-animation: shine 1s ease infinite;
+    animation: shine 1s ease infinite;
+  }
+  .skeleton:hover {
+    background-color:#272d39 ;
+  }
+  
+  @-webkit-keyframes shine {
+    to {
+      background-position: right -40px top 0;
+    }
+  }
+  
+  @keyframes shine {
+    to {
+      background-position: right -40px top 0;
+    }
+  }
+
+  @media (max-width:1000px) {
+
+    .navigation li {
+     display: none;
+    }
+    .navigation li.threeline-icon {
+     display: inline-block;
+    }
+    .profile-icon {
+     width: 100%;
+    }
+    .profile-icon img {
+     margin-top: 0px;
+     max-width: 80%;
+    }
+    .profile-title  {
+     width: 100%;
+     text-align: center;
+     margin-top: 0px;
+    }
+    .profile-title h1 {
+     margin-top: 30px;
+     font-size: 40px;
+     margin-left:20px;
+     margin-right: 20px;
+    }
+    .profile-title h2 {
+     margin-top:20px;
+     margin-left:20px;
+     margin-right: 20px;
+    }
+    .capa div {
+     display: block;
+     height: auto;
+    }
+    .experience {
+     width:100%;
+     display:block;
+ }
+ .title {
+     font-size:25px;
+     padding:10px;
+     margin-left:30px;
+     color:#8ca1f0;
+   }
+   .container-title {
+     font-size: 25px;
+   }
+   .container-description {
+     font-size: 16px;
+   }
+   .rep-card {
+    display: block;
+    width:80%;
+    margin-left:30px;
+   }
+ }

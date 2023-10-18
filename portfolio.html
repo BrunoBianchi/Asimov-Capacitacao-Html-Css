@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Portfolio - Seu Nome</title>
+    <title>Portfolio - Bruno Bianchi</title>
 
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,47 +45,120 @@
           <li><a href="./index.html">Home</a></li>
         </ul>
       </div>
-      <div id="repositorios"></div>
+      <div class="container">
+        <h1 style="font-size:25px;text-align: center;;">Meus Projetos</h1>
+        <div id="repositorios"></div>       
+      </div>
+      <a class="loadmore" onclick="loadMore()" style="margin-top: 100px;">Ver Mais</a>
+      <div class="container footer" style="margin-top: 80px">
+        <p>
+          Made with <i style="color: #da7272" class="fa-solid fa-heart"></i> by
+          Bruno Bianchi
+        </p>
+      </div>     
     </div>
   </body>
 </html>
 
 <script>
-  $(document).ready(async function () {
-    let reps = [];
+  let index = 0;
+  let reps = [];
+  $(window).ready(() => {
+    for (let i = 0; i < 6; i++) {
+      $("#repositorios").append(` <div class="rep-card skeleton">
+          <div class="rep-header ">
+            <h3 class="rep-title "></h3>
+          </div>
+          <div class="rep-body ">
+            <p class="rep-description ">
+            </p>
+          </div>          
+        </div>`);
+    }
+  });
+  window.onload = async function () {
+  
     await fetch("https://api.github.com/users/BrunoBianchi/repos", {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
-        reps = data.sort((a,b)=>{return b.stargazers_count - a.stargazers_count});
+        $("#repositorios").empty();
+        reps = data
+          .sort((a, b) => {
+            return (
+              b.stargazers_count - a.stargazers_count ||
+              new Date(b.created_at) - new Date(a.created_at)
+            );
+          })
+
       });
-    reps.forEach(async (rep) => {
+    reps.slice(0, 6).forEach(async (rep) => {
       let languages = "";
       await fetch(`${rep.languages_url}`, {
-          method: "GET",
-        }).then((langs)=>langs.json())
-        .then(async(langs_data)=>{
-          Object.keys(langs_data).forEach(lang=>{
-            languages += `<i class="devicon-${lang.toLocaleLowerCase()}-plain colored"></i> `
-          })
-        })
+        method: "GET",
+      })
+        .then((langs) => langs.json())
+        .then(async (langs_data) => {
+          Object.keys(langs_data).forEach((lang) => {
+            languages += `<i class="devicon-${lang.toLocaleLowerCase()}-plain colored"></i> `;
+          });
+        });
       $("#repositorios").append(` <div class="rep-card">
           <div class="rep-header">
             <h3 class="rep-title"><a href='${rep.svn_url}' target="_blank">${
-              rep.name
-            } </a><span class="rep-stars">${rep.stargazers_count} <i class="fa-solid fa-star"></i></span></h3>
+        rep.name
+      } </a><span class="rep-stars">${
+        rep.stargazers_count
+      } <i class="fa-solid fa-star"></i></span></h3>
           </div>
           <div class="rep-body">
             <p class="rep-description">
             ${rep.description ? rep.description : "Projeto não tem descrição! "}
             <br>
-            <span class='rep-languages' id="rep-languages-${rep.id}"></span>
+            <span class='rep-languages' id="rep-languages-${rep.id}">
+              </span>
             <br>
             </p>
           </div>          
         </div>`);
       $(`#rep-languages-${rep.id}`).append(languages);
     });
-  });
+  };
+  async function loadMore() {
+    index++;
+    let inicio = index * 7;
+    let fim =  inicio + 6;
+    reps.slice(inicio,fim).forEach(async (rep) => {
+      let languages = "";
+      await fetch(`${rep.languages_url}`, {
+        method: "GET",
+      })
+        .then((langs) => langs.json())
+        .then(async (langs_data) => {
+          Object.keys(langs_data).forEach((lang) => {
+            languages += `<i class="devicon-${lang.toLocaleLowerCase()}-plain colored"></i> `;
+          });
+        });
+      $("#repositorios").append(` <div class="rep-card">
+          <div class="rep-header">
+            <h3 class="rep-title"><a href='${rep.svn_url}' target="_blank">${
+        rep.name
+      } </a><span class="rep-stars">${
+        rep.stargazers_count
+      } <i class="fa-solid fa-star"></i></span></h3>
+          </div>
+          <div class="rep-body">
+            <p class="rep-description">
+            ${rep.description ? rep.description : "Projeto não tem descrição! "}
+            <br>
+            <span class='rep-languages' id="rep-languages-${rep.id}">
+              </span>
+            <br>
+            </p>
+          </div>          
+        </div>`);
+      $(`#rep-languages-${rep.id}`).append(languages);
+    });
+  }
 </script>

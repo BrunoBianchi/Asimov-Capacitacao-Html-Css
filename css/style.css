@@ -319,7 +319,101 @@ hr {
       background-position: right -40px top 0;
     }
   }
+  .none {
+    display: none;
+  }
+  .modal {
+    font-size:10px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    overflow: hidden;
+  }
+  .modal-content {
+    color:white;
+    border-radius:7px;
+    background-color: #1f2531;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 70%; /* Could be more or less, depending on screen size */
+    height:450px;
+    overflow-x: hidden;
+  }
+  .modal-header {
+    text-align: center;
+    justify-content: center;
+  }
+  .modal hr {
+    margin-left:12.5%;
+    margin-right:12.5%;
+    margin-top:30px;
+  }
+  .modal-header img {
+    width:75%;
+    height:300px;
+    object-fit: fill;
+    margin-bottom:10px;
+  }
+  .modal-title {
+    margin-left:12.5%;
+    text-align: left;
+    font-size:25px;
+  }
+  .modal-body {
+    margin-left:12.5%;
+  }
+  .modal-description-title {
+    font-size:22px;
+    font-weight: bolder;
+  }
+  .modal-description-content {
+    font-size:19px;
+    padding:2px;
+    word-break: break-all;
+    max-width:75%;
+  }
+  .modal-footer {
+    margin-top:40px;
+    margin-left:12.5%;
+    width:75%;
+    height:150px;
+  }
+  .modal-footer h3 {
+    font-size:19px;
+  }
+  #info {
+    font-size:20px;
+  }
+  #langs i {
+    font-size:20px;
 
+  }
+  .modal-footer-informations {
+    width:49%;
+    display: inline-block;
+    height:100px;
+  }
+  .modal-footer-informations-content {
+    padding:5px;
+    font-size:17px;
+    display: run-in;
+
+  }
+  .modal-footer-languages {
+    width:50%;
+    display: inline-block;
+  }
+  .modal-footer-languages i {
+    display: inline-block;
+    padding:5px;
+    font-size:17px;
+  }
   @media (max-width:1000px) {
 
     .navigation li {

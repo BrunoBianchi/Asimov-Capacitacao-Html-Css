@@ -1,39 +1,91 @@
 <!DOCTYPE html>
 
 <html>
+  <head>
+    <title>Portfolio - Seu Nome</title>
 
-	<head>
-		<title>Portfolio - Seu Nome</title>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
 
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-	</head>
-
-
-	<body>
-
-			
-						
-			<div>
-				
-				
-				<ul>
-					<li>Home</li>
-					<li>></li>
-					<li>Portfolio</li>
-				</ul>
-
-				<h1>Portfolio</h1>
-
-
-				<a href="#">Voltar<a>
-
-			</div>	
-
-			
-
-	</body>
-
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li class="threeline-icon">&#9776;</li>
+          <li>
+            <a href="./portfolio.html">Portifolio</a>
+          </li>
+          <li><a href="./curriculo.html">Currículo</a></li>
+          <li><a href="./contato.html">Contato</a></li>
+          <li><a href="./index.html">Home</a></li>
+        </ul>
+      </div>
+      <div id="repositorios"></div>
+    </div>
+  </body>
 </html>
+
+<script>
+  $(document).ready(async function () {
+    let reps = [];
+    await fetch("https://api.github.com/users/BrunoBianchi/repos", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        reps = data.sort((a,b)=>{return b.stargazers_count - a.stargazers_count});
+      });
+    reps.forEach(async (rep) => {
+      let languages = "";
+      await fetch(`${rep.languages_url}`, {
+          method: "GET",
+        }).then((langs)=>langs.json())
+        .then(async(langs_data)=>{
+          Object.keys(langs_data).forEach(lang=>{
+            languages += `<i class="devicon-${lang.toLocaleLowerCase()}-plain colored"></i> `
+          })
+        })
+      $("#repositorios").append(` <div class="rep-card">
+          <div class="rep-header">
+            <h3 class="rep-title"><a href='${rep.svn_url}' target="_blank">${
+              rep.name
+            } </a><span class="rep-stars">${rep.stargazers_count} <i class="fa-solid fa-star"></i></span></h3>
+          </div>
+          <div class="rep-body">
+            <p class="rep-description">
+            ${rep.description ? rep.description : "Projeto não tem descrição! "}
+            <br>
+            <span class='rep-languages' id="rep-languages-${rep.id}"></span>
+            <br>
+            </p>
+          </div>          
+        </div>`);
+      $(`#rep-languages-${rep.id}`).append(languages);
+    });
+  });
+</script>

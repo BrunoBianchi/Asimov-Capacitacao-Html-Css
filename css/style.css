@@ -411,7 +411,7 @@ hr {
   }
   .modal-footer-languages i {
     display: inline-block;
-    padding:5px;
+    margin-left:5px;
     font-size:17px;
   }
   @media (max-width:1000px) {
